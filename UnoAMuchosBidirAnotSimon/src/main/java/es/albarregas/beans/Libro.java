@@ -5,7 +5,9 @@
  */
 package es.albarregas.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
@@ -23,7 +25,7 @@ public class Libro {
     @GeneratedValue(strategy = IDENTITY)
     private Long idLibro;
     private String titulo;
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER,cascade={CascadeType.ALL})
     private Persona persona;
 
     public Persona getPersona() {
